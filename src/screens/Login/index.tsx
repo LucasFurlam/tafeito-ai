@@ -17,7 +17,6 @@ import { CustomizedCardHeader } from './styles';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../provider/authProvider';
-
 const Login = () => {
 
   const { token, setToken } = useAuth();

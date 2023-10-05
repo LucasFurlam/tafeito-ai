@@ -2,7 +2,6 @@ import React, { ReactNode, useState } from "react";
 import "./App.css";
 import AuthProvider from "./provider/authProvider";
 import { SnackbarProvider } from "notistack";
-
 import { MyGlobalContext } from "./utils/global";
 import Routes from "./routes";
 

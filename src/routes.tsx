@@ -10,6 +10,7 @@ import Tasks from './screens/Tasks';
 import ProtectRoute from './provider/protectedRoute';
 
 const Routes = () => {
+
   const authenticatedRoutes = [
     {
       path: '/',

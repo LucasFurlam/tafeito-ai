@@ -21,6 +21,8 @@ const Main = (props: MainProps) => {
         refetchtaskStatus
     } = useGlobalContext()
 
+
+
     const renderCategoriaSection = (categoria_item: Categoria) => {
         const showTaskInput = isEditingTask === false && (selectedTaskInput === null ||
             selectedTaskInput === categoria_item.descricao);
@@ -47,6 +49,7 @@ const Main = (props: MainProps) => {
             </CustomizedSectionBox>
         );
     };
+
     return (
         <Box
             display="flex"
@@ -101,7 +104,7 @@ const MainWrapper = () => {
         return <Main categorias={categorias} />;
     }
 
-    return <div>Loading!!</div>;
+    return <div>Carregando!</div>;
 };
 
 export default MainWrapper;

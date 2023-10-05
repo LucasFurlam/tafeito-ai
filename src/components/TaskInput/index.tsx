@@ -46,6 +46,7 @@ const TaskInput = (props: TaskInputProps) => {
             setTaskDescription("");
             setSelectedTaskInput(null);
             submitTask();
+            enqueueSnackbar("Tarefa criada!", { variant: "success" });
             setRefectchTaskStatus(refetchtaskStatus + 1);
         } catch (err) {
             setError((err as Error).message);
