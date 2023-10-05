@@ -1,9 +1,5 @@
 Release -> Iniciando o projeto Tafeito
 Tarefas
-[ok] - Montar o projeto no github
-[ok] - Nós iniciar o projeto base com as bibliotecas essenciais
-- Nós vamos fazer a tela de login
-- Nós vamos conectar o login com o backend
 [ok] Montar o projeto no github
 [ok] Adicionar as bibliotecas básicas para o projeto
     - Create react app (base)
@@ -11,6 +7,12 @@ Tarefas
     - MUI (interface)
 [ok]- Fazer a tela de login
 - Conectar o login com o backend
+[ok]- Conectar o login com o backend
 
+
+[ok] - Realizar a navegação entre as telas de login para tela de tarefas
+- Realizar a navegação tela de tarefas e tele de login
+
+- Realizar gestão do estado de logado ou não na aplicação
 
 Se possível, gostaria que vocês seguissem meus passos
