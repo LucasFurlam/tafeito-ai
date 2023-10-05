@@ -17,10 +17,12 @@ PR - Create Tarefas
 [x] - implementar fluxo de  sucesso
 [x] - implementar fluxo de erro
 [x] - trabalhar o visual dos componentes
-
 PR - Read Tarefas
 [x] - recuperar tarefas criadas em cada categoria
 [x] - criar componente para visualizar as tarefas
 
 PR - Update Tarefas
+[x] - controlar o estado de atualização ou visualização
+[x] - enviar atualização para o backend
+
 PR - Delete Tarefas
