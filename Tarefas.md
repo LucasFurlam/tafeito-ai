@@ -9,8 +9,16 @@ Tarefas
 [ok]- Conectar o login com o backend
 [ok] - Realizar a navegação entre as telas de login para tela de tarefas
 [ok] - Realizar a navegação tela de tarefas para a tela de login
-
 [ok] - Realizar gestão do estado de logado ou não na aplicação
-
-Se possível, gostaria que vocês seguissem meus passos
 [ok] - Personalizar a barra de navegação com o nome do usuário
+PR - Create Tarefas
+[x] - Criar interface de input
+[x] - integrar dinamicamente a listagem de categorias e suas tarefas
+[x] - implementar fluxo de  sucesso
+[x] - implementar fluxo de erro
+[] - trabalhar o visual dos componentes
+[x] - trabalhar o visual dos componentes
+
+PR - Read Tarefas
+PR - Update Tarefas
+PR - Delete Tarefas
