@@ -30,7 +30,6 @@ PR - Controlar o status das tarefas
 [x] - atualizar a visualização para mostrar o status da tarefa
 [x] - permitir concluir a tarefa
 [x] - permitir reabrir a tarefa
-[x] - permitir reabrir a tarefa
 
 PR - Implementar a gestão das etiquetas
 [x] - visualizar etiquetas nas tarefas
