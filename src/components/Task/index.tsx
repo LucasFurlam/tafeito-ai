@@ -8,6 +8,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import TaskActions from "../TaskActions";
+import { closeSnackbar } from 'notistack'
 
 import { useGlobalContext } from "../../utils/global";
 import DeleteTaskDialog from "../DeleteTaskDialog";
@@ -17,7 +18,8 @@ import {
   url_finish_task,
   url_reopen_task,
   url_estimate_task,
-} from "../../utils/api";import { useSnackbar } from "notistack";
+} from "../../utils/api";
+import { useSnackbar, SnackbarKey } from "notistack";
 import { api } from "../../provider/customAxios";
 
   const Task = (props: TaskProps) => {
@@ -27,8 +29,10 @@ import { api } from "../../provider/customAxios";
     setIsEditingTask,
     setRefectchTaskStatus,
     refetchtaskStatus,
-    isLoading,
     setIsLoading,
+    softDeletedTasks,
+    setSoftDeletedTasks,
+    softDeletedTasksRef
   } = useGlobalContext();
   const [_error, setError] = useState<null | string>(null);
 
@@ -82,15 +86,48 @@ import { api } from "../../provider/customAxios";
     }
     setChecked(newChecked);
   };
+
+  const action = (snackbarId:SnackbarKey) => (
+    <>
+      <button
+        onClick={() => {
+          const filteredValues = softDeletedTasks.filter(x => x !== task?.id);
+          setSoftDeletedTasks(filteredValues);
+          closeSnackbar(snackbarId); 
+        }}
+      >
+        Undo
+      </button>
+    </>
+  );
+
   const deleteTask = async () => {
     setIsLoading(true);
     const taskId = task?.id ?? -1;
     const custom_task_url = url_update_task.replace(":id", taskId.toString());
 
     try {
-      await api.delete(custom_task_url);
+      const newSoftDeletedTasks = softDeletedTasks.concat(task?.id);
+      setSoftDeletedTasks(newSoftDeletedTasks);
+
       setError(null);
-      enqueueSnackbar("Tarefa deletada!", { variant: "success" });
+
+      enqueueSnackbar("Tarefa deletada!", {
+        variant: "success",
+        action: action,
+        onExited: async () => {
+
+          if(softDeletedTasksRef?.current?.includes(task?.id)) {
+            await api.delete(custom_task_url);
+          }
+
+          //o id da task está na lista de tarefas deletadas?
+          //se sim, deletar task
+          //se não, não fazer nada
+          setRefectchTaskStatus(refetchtaskStatus + 1);
+        },
+      });
+      
       setRefectchTaskStatus(refetchtaskStatus + 1);
       setIsLoading(false);
     } catch (err) {
@@ -128,9 +165,10 @@ import { api } from "../../provider/customAxios";
         secondaryAction={
           <TaskActions
           deleteTask={() => {
-            if (openedDialog === false) {
-              setOpenedDialog(true);
-            }
+              // if (openedDialog === false) {
+              //   setOpenedDialog(true);
+              // }
+              deleteTask()
           }}
           editTask={() => {
             onTaskChange(task.id);
